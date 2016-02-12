@@ -1,23 +1,18 @@
 app
-    .directive("comments", ['PeoplesFactory','CacheFactory','CommentsFactory', function(PeoplesFactory,CacheFactory,CommentsFactory){
+    .directive("comments", ['PeoplesFactory','CommentsFactory', function(PeoplesFactory,CommentsFactory){
     return {
         restrict: 'E',
         templateUrl: 'js/directives/tpl/comments.html',
         link: function($scope, elem, attrs){
-            $scope.loading = true;
-            CommentsFactory.getByPost($scope.note.id).then(function(resp){
-                $scope.comments = resp.data;
-                $scope.loading = false;
-            });
+            //Passando os comentarios para o template
+            $scope.comments = CommentsFactory.getByPost($scope.note.id);
             
-            
-            $scope.loadingPeople = true;
-            PeoplesFactory.getById($scope.note.owner).then(function(resp){
-                $scope.people = resp.data[0];
-                CacheFactory.setPeopleCache($scope.people);
-                $scope.loadingPeople = false;
-            });
-
+            //buscando a pessoa do comentario e adicionando ao objeto
+            if($scope.comments != undefined && $scope.comments.length){
+                angular.forEach($scope.comments, function(comment, i){
+                    comment.people = PeoplesFactory.getById(comment.created_by);
+                });
+            }
         }
     }
 }]);

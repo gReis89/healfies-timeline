@@ -1,10 +1,10 @@
-<md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
+<!-- <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>-->
 <md-list-item class="md-3-line md-long-text" ng-repeat="comment in comments">
-    <img ng-src="{{people.photo}}" class="md-avatar" />
+    <img ng-src="{{comment.people.photo}}" class="md-avatar" />
     <div class="md-list-item-text">
-        <h3>{{ people.name }}</h3>
+        <h3>{{ comment.people.name }}</h3>
         <p>
-        {{comment.post}}
+        {{comment.content}}
         </p>
     </div>
 </md-list-item>
