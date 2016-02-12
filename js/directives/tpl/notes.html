@@ -1,4 +1,29 @@
-<div>
-    <h2>{{note.name}}</h2>
-    <comments></comments>
-</div>
+<md-card class="notes">
+    <md-card-header>
+        <md-card-avatar>
+            <md-progress-circular md-mode="indeterminate" ng-show="loadingPeople"></md-progress-circular>
+            <img ng-src="{{people.photo}}" />
+        </md-card-avatar>
+        <md-card-header-text>
+            <span class="md-title">{{ people.name }}</span>
+            <span class="md-subhead">{{note.post_time | date: 'medium' }}</span>
+        </md-card-header-text>
+    </md-card-header>
+    <hr/>
+    <md-card-content>
+        <p>
+        {{ note.content }}
+        </p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="start right">
+        
+        <md-card-icon-actions>
+            <md-button class="md-icon-button" aria-label="Share">
+                <md-icon md-font-icon="material-icons">share</md-icon>
+            </md-button>
+        </md-card-icon-actions>
+    </md-card-actions>
+        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+    
+    <comments ng-model="note"></comments>
+</md-card>

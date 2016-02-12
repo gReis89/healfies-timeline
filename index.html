@@ -4,18 +4,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Healfies Timeline</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-deep_purple.min.css">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     <!-- Custom Css -->
     <link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
-<body ng-controller="TimelineCtrl as timeline">
+<body ng-controller="TimelineCtrl">
     
-    <timeline-header></timeline-header>
-    
-    <timeline-notes ng-repeat="note in timeline.notes">
-    </timeline-notes>
-    
-    <write-note></write-note>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <timeline-header></timeline-header>
+        
+        <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
+        
+        <section class="content">
+            <timeline-notes ng-repeat="note in notes">
+            </timeline-notes>
+        </section>
+
+        <write-note></write-note>
+        
+    </div>
 
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
@@ -30,6 +39,7 @@
     <script src="js/services/notes.js"></script>
     <script src="js/services/peoples.js"></script>
     <script src="js/services/comments.js"></script>
+    <script src="js/services/cache.js"></script>
     
     <!-- Controllers -->
     <script src="js/controllers/timeline.js"></script>

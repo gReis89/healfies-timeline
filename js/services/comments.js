@@ -7,6 +7,9 @@ app.factory('CommentsFactory', ['$http', function CommentsFactory($http) {
 			getById: function(id){
 				return $http({method: 'GET', url: api + '/id/' + id});
 			},
+            getByPost: function(id){
+				return $http({method: 'GET', url: api + '/post/' + id});
+			},
             create: function(obj){
 				return $http({method: 'POST', url: api, data: obj});
 			},

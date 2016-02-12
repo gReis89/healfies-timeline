@@ -1,1 +1,27 @@
+/* CSS Animations */
+
+@keyframes show {
+    0%   {opacity: 0; top:-100px;}
+    100% {opacity: 1; top:0;}
+}
+
 /* Custom CSS */
+
+object { display: none; }
+
+body { background: #eee; }
+
+.mdl-layout__header { box-shadow: none; z-index: 2; position: relative}
+.mdl-layout__header-row { padding: 0 2em; }
+
+.content { padding:2em; }
+
+.notes { 
+    border-top:solid 2px rgb(103, 58, 183);
+    position: relative;
+    animation-name: show;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+.write-note { position: fixed; bottom: 2em; right: 2em; }
