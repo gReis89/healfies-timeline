@@ -14,10 +14,37 @@
         <p>
         {{ note.content }}
         </p>
-    </md-card-content>
-    <md-card-actions layout="row" layout-align="start right">
+        <div class="file-list" ng-show="noteFiles.length">
+            <ul class="clearfix">
+                <li ng-repeat="file in noteFiles">
+                    <img ng-src="{{file}}" class="file-image">
+                </li>
+            </ul>
+        </div>
         
-        <md-card-icon-actions>
+        <div class="share-list" ng-show="noteShares.length">
+            <strong>Shared with:</strong>
+            <ul class="clearfix">
+                <li ng-repeat="share in noteShares">
+                    <md-card-avatar>
+                        <img ng-src="{{share.photo}}" />
+                    </md-card-avatar>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="folders-list" ng-show="noteFolders.length">
+            <ul>
+                <li ng-repeat="folder in noteFolders"><md-icon md-font-icon="material-icons">folder</md-icon> {{folder}}</li>
+            </ul>
+        </div>
+        
+    </md-card-content>
+    
+    
+    
+    <md-card-actions layout="row">
+        <md-card-icon-actions layout-align="end center">
             <md-button class="md-icon-button" aria-label="Share">
                 <md-icon md-font-icon="material-icons">share</md-icon>
             </md-button>

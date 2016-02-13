@@ -34,6 +34,7 @@ app
                 $scope.loading = false;
                 $scope.notes = NotesFactory.getAll();
                 $interval.cancel(interval);
+                $scope.loggedUser = PeoplesFactory.getById(Math.floor(Math.random()*(3-1+1)+1));
             }
             console.log('checando download...');
         }, 500);

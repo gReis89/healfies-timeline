@@ -33,6 +33,18 @@ app.factory('CommentsFactory', ['$http', function CommentsFactory($http) {
             setComments: function(list){
                 comments = list;
             },
+            getNextId: function(){
+                if(comments.length){
+                    var higher = 0;
+                    for(var i = 0; i<comments.length; i++){
+                        if(comments[i].id > higher){
+                            higher = comments[i].id;
+                        }
+                    }
+                    return higher++;
+                }
+                return null;
+            },
             create: function(obj){
 				return $http({method: 'POST', url: api, data: obj});
 			},
@@ -41,6 +53,13 @@ app.factory('CommentsFactory', ['$http', function CommentsFactory($http) {
 			},
 			update: function(id, obj){
 				return $http({method: 'PUT', url: api + '/id/' + id, data: obj});
-			}
+			},
+            refresh: function(callback, post){
+                var $this = this;
+                this.getAllFromApi().then(function(resp){
+                    comments = resp.data;
+                    callback($this.getByPost(post));
+                });
+            }
 		}
 }]);

@@ -5,7 +5,14 @@
     100% {opacity: 1; top:0;}
 }
 
+/* Clearfix */
+.clearfix:after { visibility: hidden; display: block;font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+
 /* Custom CSS */
+
 
 object { display: none; }
 
@@ -13,6 +20,7 @@ body { background: #eee; }
 
 .mdl-layout__header { box-shadow: none; z-index: 2; position: relative}
 .mdl-layout__header-row { padding: 0 2em; }
+.mdl-layout__header-row img.md-avatar { height: 40px; }
 
 .content { padding:2em; }
 
@@ -22,6 +30,28 @@ body { background: #eee; }
     animation-name: show;
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
+    margin: 0 0 2em 0;
 }
+
+.file-list { padding: 0.5em; }
+.file-list ul { padding: 0; list-style: none; }
+.file-list li { float: left; width: 120px; height: 100px; overflow: hidden; margin: 0.5em; box-shadow: 2px 2px 2px #eee; }
+.file-list li img { height: 100%; display: inline-block; }
+
+.share-list ul { padding: 0; list-style: none; }
+.share-list li { float: left; overflow: hidden; margin: 0.2em; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; }
+.share-list li img { width: 100% }
+
+.folders-list { }
+.folders-list ul { padding: 0; list-style: none; }
+.folders-list li { display: inline-block; margin-right: 5px; background: #BAAAE0; border-radius: 5px; padding: 0px 10px; font-size: 12px; font-weight: bold; }
+.folders-list li md-icon { font-size: 20px; }
+
+comments { background: #EFEFEF; border-top: solid 1px #ccc; }
+comments h3 { font-size: 14px;  }
+comments .md-subhead { font-size: 14px; color: rgba(0,0,0,0.54)  }
+comments md-list-item { border-top: dashed 1px #ccc; }
+comments md-list-item:first-of-type { border: 0; }
+comments md-input-container .md-button { right: 25px; left: auto; position: absolute; top: -5px; }
 
 .write-note { position: fixed; bottom: 2em; right: 2em; }

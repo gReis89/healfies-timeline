@@ -1,10 +1,21 @@
-<!-- <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>-->
+<md-progress-linear md-mode="indeterminate" ng-show="loadingComment"></md-progress-linear>
 <md-list-item class="md-3-line md-long-text" ng-repeat="comment in comments">
     <img ng-src="{{comment.people.photo}}" class="md-avatar" />
     <div class="md-list-item-text">
         <h3>{{ comment.people.name }}</h3>
+        <span class="md-subhead">{{ comment.created_at }}</span>
         <p>
         {{comment.content}}
         </p>
     </div>
+    <md-button class="md-icon-button" ng-click="deleteComment(comment.id)">
+        <md-icon md-font-icon="material-icons">delete</md-icon>
+    </md-button>
 </md-list-item>
+
+<md-input-container md-no-float class="md-block md-icon-right">
+    <input ng-model="note.newComment" type="text" placeholder="Post a comment!" ng-enter="addComment()" >
+    <md-button class="md-icon-button" ng-click="addComment()">
+        <md-icon md-font-icon="material-icons">send</md-icon>
+    </md-button>
+</md-input-container>
