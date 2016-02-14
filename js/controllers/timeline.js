@@ -4,7 +4,7 @@ app
         //Iniciando loader
         var apiLoaded = 0;
         $scope.loading = true;
-        
+                                     
         //Buscar notas da api
         NotesFactory.getAllFromApi().then(function(resp){
 			NotesFactory.setNotes(resp.data);
@@ -14,6 +14,7 @@ app
         //Buscar pessoas da api
         PeoplesFactory.getAllFromApi().then(function(resp){
             PeoplesFactory.setPeoples(resp.data);
+            $scope.listOfPeoples = resp.data;
             apiLoaded++;
         });
         

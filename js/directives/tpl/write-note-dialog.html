@@ -1,0 +1,55 @@
+<md-dialog aria-label="New Note">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Write a new note</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="material-icons">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="width:400px;">
+        
+    <md-content layout-padding>
+        <div>
+            <form name="noteForm">
+            <md-input-container class="md-block">
+                <label>Note Description</label>
+                <textarea ng-model="newNote.content" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+            </md-input-container>
+            
+            <md-input-container class="md-block">
+                <label>Folders</label>
+                <md-chips ng-model="foldersList" placeholder="Enter a folder" delete-button-label="Remove folder" delete-hint="Press delete to remove folder" secondary-placeholder="+Folder"></md-chips>
+            </md-input-container>
+            
+            <md-input-container class="md-block">
+                <md-contact-chips
+                ng-model="contacts"
+                md-contacts="querySearch($query)"
+                md-contact-name="name"
+                md-contact-image="photo"
+                md-require-match="true"
+                md-highlight-flags="i"
+                filter-selected="filterSelected"
+                placeholder="To">
+                </md-contact-chips>
+                
+            </md-input-container>
+        </form>
+        </div>
+    </md-content>
+        
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-raised" ng-click="closeDialog()" >
+        Cancel
+      </md-button>
+      <md-button class="md-raised md-primary" ng-click="saveNote()" style="margin-right:20px;" >
+        Save Note!
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

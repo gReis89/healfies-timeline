@@ -24,6 +24,18 @@ app.factory('NotesFactory', ['$http', function NotesFactory($http) {
             setNotes: function(list){
                 notes = list;
             },
+            getNextId: function(){
+                if(notes.length){
+                    var higher = 0;
+                    for(var i = 0; i<notes.length; i++){
+                        if(notes[i].id > higher){
+                            higher = notes[i].id;
+                        }
+                    }
+                    return parseFloat(higher,10)+1;
+                }
+                return 1;
+            },
             create: function(obj){
 				return $http({method: 'POST', url: api, data: obj});
 			},
@@ -32,6 +44,12 @@ app.factory('NotesFactory', ['$http', function NotesFactory($http) {
 			},
 			update: function(id, obj){
 				return $http({method: 'PUT', url: api + '/id/' + id, data: obj});
-			}
+			},
+            refresh: function(callback){
+                this.getAllFromApi().then(function(resp){
+                    notes = resp.data;
+                    callback(notes);
+                });
+            }
 		}
 }]);

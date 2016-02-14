@@ -41,9 +41,9 @@ app.factory('CommentsFactory', ['$http', function CommentsFactory($http) {
                             higher = comments[i].id;
                         }
                     }
-                    return higher++;
+                    return higher+1;
                 }
-                return null;
+                return 1;
             },
             create: function(obj){
 				return $http({method: 'POST', url: api, data: obj});
