@@ -1,2 +1,2 @@
 # healfies-timeline
-App test for helfies
+App test for healfies
