@@ -38,7 +38,7 @@ app.factory('CommentsFactory', ['$http', function CommentsFactory($http) {
                     var higher = 0;
                     for(var i = 0; i<comments.length; i++){
                         if(comments[i].id > higher){
-                            higher = comments[i].id;
+                            higher = parseFloat(comments[i].id,10);
                         }
                     }
                     return higher+1;
